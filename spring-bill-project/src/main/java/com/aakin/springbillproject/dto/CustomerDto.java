@@ -15,8 +15,8 @@ public class CustomerDto {
 
     private String customerName;
     private String customerEmail;
-    private int tckn;
-    private List<BillDto> bills;
+    private Integer tckn;
+
 
 
 

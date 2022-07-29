@@ -26,12 +26,14 @@ public class BillDtoConverter {
     }
 
     public Bill convertBill(BillDto billDto){
+
        Bill bill = new Bill();
        bill.setProductName(billDto.getProductName());
        bill.setProductPrice(billDto.getProductPrice());
        bill.setCustomerName(billDto.getCustomerName());
        bill.setProducts(billDto.getProducts().stream().map(productDtoConverter::convertProduct).collect(Collectors.toList()));
        return bill;
+
     }
 
 

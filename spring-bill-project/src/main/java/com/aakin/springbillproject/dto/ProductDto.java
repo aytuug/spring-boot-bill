@@ -15,9 +15,8 @@ import java.util.List;
 public class ProductDto {
 
     private String productName;
-    private int productQuantity;
+    private Integer productQuantity;
     private Double productPrice;
-    //private Bill bills;
 
 
 }

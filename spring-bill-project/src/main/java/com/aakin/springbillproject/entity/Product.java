@@ -16,7 +16,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private int productId;
+    private Integer productId;
 
     @Column(name = "product_name")
     private String productName;
@@ -29,7 +29,7 @@ public class Product {
 
     //manyToOne -> bill
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
     @JoinColumn(name = "bill_id")
     private Bill bill;
 

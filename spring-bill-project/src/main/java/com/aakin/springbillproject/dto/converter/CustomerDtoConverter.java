@@ -21,33 +21,24 @@ public class CustomerDtoConverter {
     private final BillDtoConverter billDtoConverter;
 
     public CustomerDto convertCustomerDto(Customer customer){
-        /*
-        CustomerDto customerDto = modelMapper.map(customer, CustomerDto.class);
-        return customerDto;
-
-         */
 
         CustomerDto customerDto = new CustomerDto();
         customerDto.setCustomerEmail(customer.getCustomerEmail());
         customerDto.setCustomerName(customer.getCustomerName());
         customerDto.setTckn(customer.getTckn());
-        customerDto.setBills(customer.getBills().stream().map(billDtoConverter::convertBillDto).collect(Collectors.toList()));
+        //customerDto.setBills(customer.getBills().stream().map(billDtoConverter::convertBillDto).collect(Collectors.toList()));
         return customerDto;
 
     }
 
     public Customer convertCustomer(CustomerDto customerDto){
         Customer customer = new Customer();
-        customer.setCustomerName(customer.getCustomerName());
-        customer.setCustomerEmail(customer.getCustomerEmail());
-        customer.setTckn(customer.getTckn());
-        customer.setBills(customer.getBills());
-        return customer;
-        /*
-        Customer customer = modelMapper.map(customerDto, Customer.class);
+        customer.setCustomerName(customerDto.getCustomerName());
+        customer.setCustomerEmail(customerDto.getCustomerEmail());
+        customer.setTckn(customerDto.getTckn());
+        //customer.setBills(customerDto.getBills().stream().map(billDtoConverter::convertBill).collect(Collectors.toList()));
         return customer;
 
-         */
     }
 
 

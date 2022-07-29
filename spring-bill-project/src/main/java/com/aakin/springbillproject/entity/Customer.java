@@ -17,7 +17,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private int id;
+    private Integer id;
 
     @Column(name = "customer_name")
     private String customerName;
@@ -26,7 +26,7 @@ public class Customer {
     private String customerEmail;
 
     @Column(name = "tc_no")
-    private int tckn;
+    private Integer tckn;
 
     //onetomany -> bill
 

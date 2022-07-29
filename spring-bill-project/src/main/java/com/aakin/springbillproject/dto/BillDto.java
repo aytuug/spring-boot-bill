@@ -10,10 +10,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BillDto {
+
     private String customerName;
     private String productName;
-    private double productPrice;
-
+    private Double productPrice;
     private List<ProductDto> products;
 
 

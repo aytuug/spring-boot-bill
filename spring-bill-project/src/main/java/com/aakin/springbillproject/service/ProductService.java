@@ -17,14 +17,15 @@ public class ProductService {
     public ProductDto createProduct(ProductDto productDto){
 
         Product product = new Product();
+        
         product.setProductQuantity(productDto.getProductQuantity());
         product.setProductPrice(productDto.getProductPrice());
         product.setProductName(productDto.getProductName());
-
+        productDtoConverter.convertProductDto(product);
         productRepository.save(product);
-
-        return productDtoConverter.convertProductDto(product);
+        return productDto;
 
     }
+
 
 }

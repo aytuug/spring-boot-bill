@@ -14,11 +14,6 @@ public class ProductDtoConverter {
     //private final ModelMapper modelMapper;
 
     public ProductDto convertProductDto(Product product){
-        /*
-        ProductDto productDto = modelMapper.map(product, ProductDto.class);
-        return productDto;
-
-         */
 
         ProductDto productDto = new ProductDto();
         productDto.setProductName(product.getProductName());
@@ -30,17 +25,14 @@ public class ProductDtoConverter {
     }
 
     public Product convertProduct(ProductDto productDto){
-        /*
-        Product product = modelMapper.map(productDto, Product.class);
-        return product;
 
-         */
         Product product = new Product();
         //product.setProductId(product.getProductId()); id setlemiyoruz.
         product.setProductName(productDto.getProductName());
-        product.setProductQuantity(product.getProductQuantity());
-        product.setProductPrice(product.getProductPrice());
-        //product.setBill(product.getBill());
+        product.setProductQuantity(productDto.getProductQuantity());
+        product.setProductPrice(productDto.getProductPrice());
+        product.setBill(product.getBill());
+
         return product;
     }
 
