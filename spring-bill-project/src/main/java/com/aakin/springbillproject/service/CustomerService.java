@@ -1,20 +1,15 @@
 package com.aakin.springbillproject.service;
 
-import com.aakin.springbillproject.dto.BillDto;
+
 import com.aakin.springbillproject.dto.CustomerDto;
-import com.aakin.springbillproject.dto.converter.BillDtoConverter;
 import com.aakin.springbillproject.dto.converter.CustomerDtoConverter;
-import com.aakin.springbillproject.entity.Bill;
 import com.aakin.springbillproject.entity.Customer;
-import com.aakin.springbillproject.repository.BillRepository;
 import com.aakin.springbillproject.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
