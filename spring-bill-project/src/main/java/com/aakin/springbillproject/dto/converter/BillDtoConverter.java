@@ -20,7 +20,7 @@ public class BillDtoConverter {
         billDto.setProductName(bill.getProductName());
         billDto.setProductPrice(bill.getProductPrice());
         billDto.setCustomerName(bill.getCustomerName());
-        billDto.setProducts(bill.getProducts().stream().map(productDtoConverter::convertProductDto).collect(Collectors.toList()));
+//        billDto.setProducts(bill.getProducts().stream().map(productDtoConverter::convertProductDto).collect(Collectors.toList()));
         return billDto;
 
     }
@@ -31,7 +31,7 @@ public class BillDtoConverter {
        bill.setProductName(billDto.getProductName());
        bill.setProductPrice(billDto.getProductPrice());
        bill.setCustomerName(billDto.getCustomerName());
-       bill.setProducts(billDto.getProducts().stream().map(productDtoConverter::convertProduct).collect(Collectors.toList()));
+//       bill.setProducts(billDto.getProducts().stream().map(productDtoConverter::convertProduct).collect(Collectors.toList()));
        return bill;
 
     }
