@@ -1,6 +1,7 @@
 package com.aakin.springbillproject.service;
 
 import com.aakin.springbillproject.dto.BillDto;
+import com.aakin.springbillproject.dto.ProductDto;
 import com.aakin.springbillproject.dto.converter.BillDtoConverter;
 import com.aakin.springbillproject.dto.converter.CustomerDtoConverter;
 import com.aakin.springbillproject.dto.converter.ProductDtoConverter;
@@ -13,6 +14,8 @@ import com.aakin.springbillproject.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -27,7 +30,7 @@ public class BillService {
     private final BillRepository billRepository;
 
 
-    public BillDto createBill(BillDto billDto, Integer productId, Integer customerId){
+    public BillDto createBill(Integer productId, Integer customerId){
 
         Bill bill = new Bill();
 
@@ -40,6 +43,7 @@ public class BillService {
         Optional<Customer> customer = customerRepository.findById(customerId);
         if (customer.isPresent()){
             bill.setCustomerName(customer.get().getCustomerName());
+            bill.setCustomer(customer.get());
         }
 
         //bill.setBillId(billDto.getBillId());
@@ -56,6 +60,29 @@ public class BillService {
 
     }
 
+
+    public List<BillDto> getAllBills() {
+        List<Bill> bills = billRepository.findAll();
+        List<BillDto> billDtoList = new ArrayList<>();
+
+        for (Bill bill : bills){
+            billDtoList.add(billDtoConverter.convertBillDto(bill));
+        }
+        return billDtoList;
+    }
+
+
+    public BillDto getBillById(Integer id) {
+
+        Optional<Bill> billOptional = billRepository.findById(id);
+        return billOptional.map(billDtoConverter::convertBillDto).orElse(null);
+
+    }
+
+
+    public void deleteBill(Integer id) {
+        billRepository.deleteById(id);
+    }
 
 
 }

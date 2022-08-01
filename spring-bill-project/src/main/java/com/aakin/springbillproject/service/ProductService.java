@@ -2,7 +2,9 @@ package com.aakin.springbillproject.service;
 
 import com.aakin.springbillproject.dto.ProductDto;
 import com.aakin.springbillproject.dto.converter.ProductDtoConverter;
+import com.aakin.springbillproject.entity.Bill;
 import com.aakin.springbillproject.entity.Product;
+import com.aakin.springbillproject.repository.BillRepository;
 import com.aakin.springbillproject.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductDtoConverter productDtoConverter;
+    private final BillRepository billRepository;
 
     public ProductDto createProduct(ProductDto productDto){
         Product product = new Product();
@@ -24,6 +27,14 @@ public class ProductService {
         product.setProductQuantity(productDto.getProductQuantity());
         product.setProductPrice(productDto.getProductPrice());
         product.setProductName(productDto.getProductName());
+
+        /*
+        Optional<Bill> bill = billRepository.findById(id);
+        if (bill.isPresent() && bill.get().getProductName().equals(product.getProductName())){
+            product.setBill(bill.get());
+        }
+
+         */
 
         productRepository.save(product);
         return productDtoConverter.convertProductDto(product);
